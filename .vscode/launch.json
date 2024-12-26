@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "python",
+            "program": "${workspaceRoot}/mysite/manage.py",
+            "args": [
+                "runserver",
+                "0.0.0.0:80",
+                "--noreload"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging"
+            ],
+        }
+    ]
+}

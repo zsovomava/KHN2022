@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Jitsi</h2>
+    <hr>
+    <div id="jitsi" class="text-center"></div>
+{% endblock %}
+
+{% block javascript %}
+    <script src='https://meet.jit.si/external_api.js'></script>
+    <script>
+        const domain = 'meet.jit.si';
+        const options = {
+            roomName: '{{ room }}',
+            width: '100%',
+            height: '35em',
+            parentNode: document.querySelector('#jitsi'),
+            startWithAudioMuted: true,
+            userInfo: {
+                email: '{{ email }}',
+                displayName: '{{ username }}'
+            }
+        };
+
+        var api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Csoportok</h2>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        <h3>Biztosan törölni szeretné a {% if object.author and object.author != user %} "{{ object.author }}" felhasználóhoz tartozó {% endif %} kommentet?</h3>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-danger">Igen</button>
+            <a href="{% url 'main:post-detail' object.id %}" class="btn btn-outline-secondary">Mégsem</a>
+        </div>
+    </form>
+{% endblock %}

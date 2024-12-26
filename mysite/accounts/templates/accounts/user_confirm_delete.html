@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Profil</h2>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        <h3>Biztosan törölni szeretné a felhasználói fiókját?</h3>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-danger">Igen</button>
+            <a href="{% url 'main:home' %}" class="btn btn-outline-secondary">Mégsem</a>
+        </div>
+    </form>
+{% endblock %}

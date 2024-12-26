@@ -1,0 +1,161 @@
+{% extends 'main/base.html' %}
+
+{% block css %}
+<style>
+    .card-img-top {
+        border-radius: 15px 15px 0px 0px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2),
+    }
+
+    div.card {
+        box-shadow: 0 15px 80px rgba(0, 0, 0, 0.19);
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="display-1 mb-4 text-center">Helló, Világ!</h1>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="input-group mb-3 w-50">
+        <div class="input-group-prepend" onmouseover="turnOn();" onmouseout="turnOff();">
+            <span class="input-group-text bg-light border" id="lightbulb-outer"><i class="far fa-lightbulb"
+                    id="lightbulb"></i></span>
+        </div>
+        <input type="text" class="form-control font-weight-bold font-italic bg-light border text-center" value="{{ tip }}"
+            disabled>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://pbs.twimg.com/profile_images/378800000581117663/1acfd8040dd4d1feacbd81d41f2c9ff5.png"
+                class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">PCFORUM</h5>
+                <p class="card-text">Egy ismert, minőségi magyar hírportál, ahol akár a nyílt forrás kódú témájú
+                    hírekről is gyorsan lehet tájékozódni</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://pcforum.hu/" class="btn btn-primary" target="_blank" onclick="this.blur();">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://prog.hu/favicon.ico"
+                class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">PROG.HU</h5>
+                <p class="card-text">Magyarország legnagyobb fejlesztői portálja, a magyar programozók első számú online
+                    szakmai fóruma</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://prog.hu/tudastar/" class="btn btn-primary" target="_blank" onclick="this.blur();">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://pbs.twimg.com/profile_images/558933575/logo_ph_400x400.jpg" class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">PROHARDVER</h5>
+                <p class="card-text">Magyarország egyik legrégebbi és legsokrétűbb online tech magazinja</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://prohardver.hu/index.html" class="btn btn-primary"
+                    target="_blank">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://verseny.nisz.hu/sites/default/files/logo_dark.png" class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">KÓDOLJ HATÁROK NÉLKÜL!</h5>
+                <p class="card-text">A hivatalos weboldal.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://verseny.nisz.hu/" class="btn btn-primary" target="_blank" onclick="this.blur();">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="data:image/png;base64,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"
+                class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">PYTHON</h5>
+                <p class="card-text">A hírhedt programozási nyelv weboldala.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://www.python.org/" class="btn btn-primary" target="_blank" onclick="this.blur();">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://sangeeta.io/images/tech-stack/django.png" class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">DJANGO</h5>
+                <p class="card-text">Egyszerűen nagyszerű Python-alapú, webes keretrendszer</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://www.djangoproject.com/" class="btn btn-primary"
+                    target="_blank">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" class="card-img-top"
+                alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">GODOT</h5>
+                <p class="card-text">Ha a programozó játékosabb vizekre evezne, egy kis open source engine.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://godotengine.org/" class="btn btn-primary" target="_blank" onclick="this.blur();">Ugrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 my-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; margin-left: auto; margin-right: auto;">
+            <img src="data:image/png;base64,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"
+                class="card-img-top" alt="cikk">
+            <div class="card-body">
+                <h5 class="card-title">OPENSOURCE.COM</h5>
+                <p class="card-text">Abszolúte open source hírek elsőkézből.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://opensource.com/tags/news" class="btn btn-primary"
+                    target="_blank">Ugrás</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+    const lightbulb = document.getElementById("lightbulb");
+    const lightbulbOuter = document.getElementById("lightbulb-outer");
+
+    function turnOn() {
+        lightbulb.classList.remove("far");
+        lightbulb.classList.add("fas");
+        lightbulbOuter.classList.remove("bg-light");
+        lightbulbOuter.classList.add("bg-warning", "border-warning");
+    }
+    
+    function turnOff() {
+        lightbulb.classList.remove("fas");
+        lightbulb.classList.add("far");
+        lightbulbOuter.classList.remove("bg-warning", "border-warning");
+        lightbulbOuter.classList.add("bg-light");
+    }
+</script>
+{% endblock %}

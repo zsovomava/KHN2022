@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="media pt-2 mb-4">
+        <div id="img-container" class="pr-4 mr-4 border-right">
+            <img class="img-fluid rounded-circle account-img float-md-right" src="{{ object.profile.image.url }}">
+        </div>
+        <div id="info-container" class="my-auto">
+            <h2 class="display-2 align-middle">{{ object.username }}</h2>
+            <i class="text-secondary align-middle">{{ object.email }}</i>
+        </div>
+    </div>
+    {% if object == user %}
+        <form method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profil adatok</legend>
+                {{ u_form|crispy }}
+                <a href="{% url 'password_change' %}" class="btn btn-outline-dark btn-sm mb-2">Jelszóváltoztatás</a>
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-outline-secondary">Módosítás</button>
+                <button type="submit" class="btn btn-block btn-outline-danger" name="delete">Törlés</button>
+            </div>
+        </form>
+    {% else %}
+        <p>{{ object.bio }}</p>
+    {% endif %}
+{% endblock %}
